@@ -1,19 +1,19 @@
 var app = angular.module('blogApp', [])
 
-app.factory("blogFactory", function(){
+app.factory('blogFactory', function(){
     var articlesList = [
         {
-            title: "title1",
-            content: "content1 sfdsfsf sdf sdf"
+            title: 'title1',
+            content: 'content1 sfdsfsf sdf sdf'
         }, {
-            title: "title2",
-            content: "content2 asfdsafsdfasf asd adsfsdf"
+            title: 'title2',
+            content: 'content2 asfdsafsdfasf asd adsfsdf'
         }, {
-            title: "title3",
-            content: "content3 asfsdf;  sk;flkwr"
+            title: 'title3',
+            content: 'content3 asfsdf;  sk;flkwr'
         }, {
-            title: "title4",
-            content: "content4 sfdsfsf sdf sdf"
+            title: 'title4',
+            content: 'content4 sfdsfsf sdf sdf'
         }];
     return {
         getArticles: function getArticles() {
@@ -28,8 +28,6 @@ app.factory("blogFactory", function(){
     	}
     };
 });
-
-
 
 app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blogFactory) {
     $scope.articles = blogFactory.getArticles()

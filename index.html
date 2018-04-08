@@ -1,29 +1,37 @@
 <!doctype html>
 <head>
-    <title>Tasks App</title>
+    <title>Blog App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div ng-app="toDoApp">
-        <div ng-controller="toDoController">
-
-            <h3>Active ({{ tasks.length }})</h3>
-            <span ng-if="tasks.length === 0">You have no active tasks!</span>
-            <ul ng-repeat="task in tasks">
-                <li>
-                    <input type="checkbox" ng-click="removeTask($index)" /> {{ task }}
-                </li>
-            </ul>
-
-            <h2>Add a Task</h2>
-            <form>
-                <input type="text" placeholder="Description" ng-model="newTaskName" />
-                <input type="button" value="Add" ng-click="addTask()" />
-            </form>
-
+    <main class="main" ng-app="blogApp">
+        <div class="container">
+            <div ng-controller="blogController">
+                <section class="section-block">
+                    <articles-details articles="articles"></articles-details>
+                    <div class="articles">
+                        <article class="article" ng-repeat="article in articles">
+                            <div class="article-body">
+                                <h3 class="article-title">{{ article.title }}</h3>                            
+                                <div class="article-content">{{ article.content }}</div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <section class="section-block">
+                    <h2 class="add-post-form__title">Add an Article</h2>
+                    <form class="add-post-form">
+                        <input type="text" class="field-item" placeholder="Article title" ng-model="newArticleTitle">
+                        <textarea class="field-item" rows="10" placeholder="Article text" ng-model="newArticleName">
+                        </textarea>
+                        <button type="button" class="btn add-post-btn" ng-click="addArticle()">Submit</button>
+                    </form>
+                </section>
+            </div>
         </div>
-    </div>
-    
-    <script src="todo.js"></script>
+    </main>
+    <script src="articleApp.js"></script>
+    <script src="articlesDetails.js"></script>
 </body>
 </html>

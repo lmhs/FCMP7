@@ -1,0 +1,7 @@
+<section class="section-block">
+    <h2>Articles number ({{ $ctrl.articles.length }}):</h2>
+    <h2 ng-if="$ctrl.articles.length === 0">You have no articles!</h2>
+    <ul ng-if="$ctrl.articles.length !== 0">
+      <li ng-repeat="article in $ctrl.articles">{{ article.title }}</li>
+    </ul>
+</section>
