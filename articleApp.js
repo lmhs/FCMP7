@@ -61,7 +61,6 @@ app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blo
     $scope.articles = blogFactory.getArticles();
     $scope.editing = false;
     $scope.formVisible = false;
-    $scope.article = {};
 
     $scope.addArticle = function (article, form) {
         if ($scope.editing === true) {
@@ -73,11 +72,6 @@ app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blo
 
     $scope.showForm = function () {
         $scope.formVisible = true;
-    }
-
-    $scope.editArticle = function (article) {
-        $scope.editing = true;
-        $scope.article = angular.copy(article);
     }
 }]);
 

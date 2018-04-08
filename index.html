@@ -10,14 +10,10 @@
             <div ng-controller="blogController">
                 <section class="section-block">
                     <articles-details articles="articles"></articles-details>
-                    <div class="articles">
-                        <article class="article" ng-click="editArticle(article)" ng-repeat="article in articles">
-                            <div class="article-body">
-                                <h3 class="article-title">{{ article.title }}</h3>                            
-                                <div class="article-content">{{ article.content }}</div>
-                            </div>
-                        </article>
-                    </div>
+                    <articles-list
+                        articles="articles"
+                        article="article"
+                        editing="editing"></articles-list>
                 </section>
                 <section class="section-block">
                     <button class="btn" type="button" ng-click="showForm()">Add an Article</button>
@@ -35,6 +31,7 @@
     </main>
     <script src="articleApp.js"></script>
     <script src="articlesDetails.js"></script>
+    <script src="articlesList.js"></script>
     <script src="articleAdd.js"></script>
 </body>
 </html>

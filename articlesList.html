@@ -1,0 +1,8 @@
+<div class="articles">
+    <article class="article" ng-click="$ctrl.editArticle(item)" ng-repeat="item in $ctrl.articles">
+        <div class="article-body">
+            <h3 class="article-title">{{ item.title }}</h3>                            
+            <div class="article-content">{{ item.content }}</div>
+        </div>
+    </article>
+</div>
