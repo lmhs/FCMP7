@@ -1,0 +1,27 @@
+<form ng-submit="$ctrl.addArticle(article, form)" name="form" class="add-post-form" novalidate>
+    <input type="text"
+        class="field-item"
+        placeholder="Article title"
+        name="aTitle"
+        ng-model="$ctrl.article.title"
+        required>
+    <div ng-show="form.$submitted || form.aTitle.$touched">
+        <p class="error" ng-show="form.aTitle.$error.required">Article title is mandatory.</p class="error">
+    </div>
+    <textarea
+        class="field-item"
+        rows="10"
+        placeholder="Article text"
+        name="aContent"
+        minlen="20"
+        ng-model="$ctrl.article.content"
+        required>
+    </textarea>
+    <div ng-show="form.$submitted || form.aContent.$touched">
+        <p class="error" ng-show="form.aContent.$error.required">Article content is mandatory.</p class="error">
+        <p class="error" ng-show="form.aContent.$error.minlen">Article content minlength is 20.</p class="error">
+    </div>
+    <button type="submit"
+        ng-disabled="form.$invalid"
+        class="btn add-post-btn">Submit</button>
+</form>

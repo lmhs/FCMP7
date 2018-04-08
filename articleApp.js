@@ -59,8 +59,8 @@ app.factory('blogFactory', function(){
 
 app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blogFactory) {
     $scope.articles = blogFactory.getArticles();
-    $scope.master = {id: '', title: '', content: ''};
     $scope.editing = false;
+    $scope.formVisible = false;
     $scope.article = {};
 
     $scope.addArticle = function (article, form) {
@@ -69,11 +69,11 @@ app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blo
         } else {
             blogFactory.addArticle(angular.copy(article, {id: $scope.articles.length}));
         }
-        $scope.article = angular.copy($scope.master);
-        form.$setPristine();
-        form.$setUntouched();
-        $scope.editing = false;
     };
+
+    $scope.showForm = function () {
+        $scope.formVisible = true;
+    }
 
     $scope.editArticle = function (article) {
         $scope.editing = true;
