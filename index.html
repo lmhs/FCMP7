@@ -21,11 +21,32 @@
                 </section>
                 <section class="section-block">
                     <h2 class="add-post-form__title">Add an Article</h2>
-                    <form class="add-post-form">
-                        <input type="text" class="field-item" placeholder="Article title" ng-model="newArticleTitle">
-                        <textarea class="field-item" rows="10" placeholder="Article text" ng-model="newArticleName">
+                    <form ng-submit="addArticle(article, form)" name="form" class="add-post-form" novalidate>
+                        <input type="text"
+                            class="field-item"
+                            placeholder="Article title"
+                            name="aTitle"
+                            ng-model="article.title"
+                            required>
+                        <div ng-show="form.$submitted || form.aTitle.$touched">
+                            <p class="error" ng-show="form.aTitle.$error.required">Article title is mandatory.</p class="error">
+                        </div>
+                        <textarea
+                            class="field-item"
+                            rows="10"
+                            placeholder="Article text"
+                            name="aContent"
+                            minlength="20"
+                            ng-model="article.content"
+                            required>
                         </textarea>
-                        <button type="button" class="btn add-post-btn" ng-click="addArticle()">Submit</button>
+                        <div ng-show="form.$submitted || form.aContent.$touched">
+                            <p class="error" ng-show="form.aContent.$error.required">Article content is mandatory.</p class="error">
+                            <p class="error" ng-show="form.aContent.$error.minlength">Article content minlength is 20.</p class="error">
+                        </div>
+                        <button type="submit"
+                            ng-disabled="form.$invalid"
+                            class="btn add-post-btn">Submit</button>
                     </form>
                 </section>
             </div>

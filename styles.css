@@ -190,6 +190,7 @@ select {
 }
 
 .add-post-form {
+  position: relative;
   padding: 20px;
   background: #fafafa;
 }
@@ -206,6 +207,15 @@ select {
   padding: 10px;
 }
 
+.add-post-btn[disabled='disabled'] {
+  border: rgba(0,0,0,.05);
+  color: #fff;
+  cursor: not-allowed;
+}
+.add-post-btn[disabled='disabled']:hover {
+  background: rgba(0,0,0,.05);
+}
+
 .field-item {
   width: 500px;
   max-width: 100%;
@@ -217,4 +227,14 @@ select {
   background: rgba(0,0,0,.05);
   border-radius: 3px;
   border: none;
+}
+
+.error {
+  width: 500px;
+  max-width: 100%;
+  display: block;
+  margin: -20px auto 0;
+  padding: 5px 20px;
+  font-size: 15px;
+  color: red;
 }

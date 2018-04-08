@@ -1,5 +1,27 @@
 var app = angular.module('blogApp', [])
 
+app.directive('minlength', function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, elm, attrs, ctrl) {
+        ctrl.$validators.minlength = function(modelValue, viewValue) {
+          if (ctrl.$isEmpty(modelValue)) {
+            // consider empty models to be valid
+            return true;
+          }
+  
+          if (viewValue.length >= attrs.minlength) {
+            // it is valid
+            return true;
+          }
+  
+          // it is invalid
+          return false;
+        };
+      }
+    };
+  });
+
 app.factory('blogFactory', function(){
     var articlesList = [
         {
@@ -19,8 +41,7 @@ app.factory('blogFactory', function(){
         getArticles: function getArticles() {
              return articlesList;
         },
-        addArticle: function addArticle(title, content){
-            const article = { title, content };
+        addArticle: function addArticle(article){
             articlesList.push(article);
         },
         removeArticle: function removeArticle(text){
@@ -31,17 +52,17 @@ app.factory('blogFactory', function(){
 
 app.controller('blogController', ['$scope', 'blogFactory', function ($scope, blogFactory) {
     $scope.articles = blogFactory.getArticles()
-    $scope.newArticleName = '';
-    $scope.newArticleTitle = '';
+    $scope.master = {title: '', content: ''};
+    $scope.article = {};
 
-    $scope.addArticle = function () {
-        blogFactory.addArticle($scope.newArticleName, $scope.newArticleTitle)
-        $scope.newArticleName = '';
-        $scope.newArticleTitle = '';
+    $scope.addArticle = function (article, form) {
+        // if (!article.title || !article.content || article.content < 20) {
+        //     return false
+        // }
+        blogFactory.addArticle(angular.copy(article));
+        $scope.article = angular.copy($scope.master);
+        form.$setPristine();
+        form.$setUntouched();
     };
-
-    $scope.removeArticle = function (text) {
-        blogFactory.removeArticle(text);
-    }
 }]);
 
