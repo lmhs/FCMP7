@@ -1,16 +1,16 @@
 var app = angular.module('blogApp', [])
 
-app.directive('minlength', function() {
+app.directive('minlen', function() {
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ctrl) {
-        ctrl.$validators.minlength = function(modelValue, viewValue) {
+        ctrl.$validators.minlen = function(modelValue, viewValue) {
           if (ctrl.$isEmpty(modelValue)) {
             // consider empty models to be valid
             return true;
           }
   
-          if (viewValue.length >= attrs.minlength) {
+          if (viewValue.length >= attrs.minlen) {
             // it is valid
             return true;
           }

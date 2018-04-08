@@ -36,13 +36,13 @@
                             rows="10"
                             placeholder="Article text"
                             name="aContent"
-                            minlength="20"
+                            minlen="20"
                             ng-model="article.content"
                             required>
                         </textarea>
                         <div ng-show="form.$submitted || form.aContent.$touched">
                             <p class="error" ng-show="form.aContent.$error.required">Article content is mandatory.</p class="error">
-                            <p class="error" ng-show="form.aContent.$error.minlength">Article content minlength is 20.</p class="error">
+                            <p class="error" ng-show="form.aContent.$error.minlen">Article content minlength is 20.</p class="error">
                         </div>
                         <button type="submit"
                             ng-disabled="form.$invalid"
